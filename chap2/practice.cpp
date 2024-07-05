@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void calculator(int* a, int* b, int* sum, int* sub, int* mult, int* div, int* rem);
+void admission(int* audience, int* seat, double* rate);
+void sum(int* a, int *res);
+void quadrant(int* a, int* b);
+void leapYear(int* a);
+
 int main(void) {
 
 	// 연습 1.
@@ -49,7 +55,7 @@ int main(void) {
 	double rate;
 
 	scanf_s("%d %d", &seat, &audience);
-	rate = (double)audience / (double)seat * 100.0;
+	rate = (double)seat / (double)audience * 100.0;
 	printf("%.1lf", rate);
 	*/
 
@@ -245,6 +251,53 @@ int main(void) {
 	printf("%d %d\n", h, m);
 	*/
 
+	// 연습 16
+	/*
+	int a, b;
+	int sum, sub, mult, div, rem;
+
+	scanf_s("%d %d", &a, &b);
+
+	calculator(&a, &b, &sum, &sub, &mult, &div, &rem);
+	printf("%d %d %d %d %d", sum, sub, mult, div, rem);
+	*/
+	
+	// 연습 17
+	/*
+	int seat, audience;
+	double rate;
+
+	scanf_s("%d %d", &seat, &audience);
+	
+	admission(&seat, &audience, &rate);
+	printf("%.1lf", rate);
+	*/
+
+	// 연습 18
+	/*
+	int a, res;
+
+	scanf_s("%d", &a);
+
+	sum(&a, &res);
+
+	printf("%d", res);
+	*/
+
+	// 연습 19
+	/*
+	int a, b;
+	scanf_s("%d %d", &a, &b);
+
+	quadrant(&a, &b);
+	*/
+	
+	// 연습 20
+	int a;
+	scanf_s("%d", &a);
+
+	leapYear(&a);
+
 	// 연습 21
 	/*
 	int a, b;
@@ -402,4 +455,57 @@ int main(void) {
 
 	return 0;
 
+}
+
+void calculator(int* a, int* b, int* sum, int* sub, int* mult, int* div, int* rem)
+{
+	*sum = *a + *b;
+	*sub = *a - *b;
+	*mult = *a * *b;
+	*div = *a / *b;
+	*rem = *a % *b;
+}
+
+void admission(int *audience, int *seat, double *rate) {
+	*rate = ((double)* seat / (double)* audience) * 100.0;
+}
+
+void sum(int* a, int* res)
+{
+	*res = 0;
+	for (int i = 1; i <= *a; i++) 
+	{
+		*res += i;
+	}
+}
+
+void quadrant(int* a, int* b)
+{
+	if (*a > 0 && *b > 0) {
+		printf("1");
+	}
+	else if (*a < 0 && *b > 0) {
+		printf("2");
+	}
+	else if (*a < 0 && *b < 0) {
+		printf("3");
+	}
+	else if (*a > 0 && *b < 0) {
+		printf("4");
+	}
+}
+
+void leapYear(int* a)
+{
+	if (*a > 0) {
+		if ((*a % 4) == 0 && (*a % 100) != 0 || (*a % 400) == 0) {
+			printf("1"); // 4의 배수면서 100의 배수가 아니거나 400의 배수일 때 윤년이니 1을 출력
+		}
+		else {
+			printf("0");
+		}
+	}
+	else {
+		printf("error");
+	}
 }
