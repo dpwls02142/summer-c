@@ -1,8 +1,12 @@
 #include <stdio.h>
+#include <string.h>
 
 // void swap(int* pa, int* pb);
 // void print_ary(int* pa);
 // void print_ary2(int pa[5]);
+
+// void input_ary(double* pa, int size);
+// double find_max(double* pa, int size);
 
 int main(void) {
 
@@ -92,6 +96,58 @@ int main(void) {
 	print_ary2(ary);
 	*/
 
+	// 코드 51
+	/*
+	double ary[5];
+	double max;
+
+	input_ary(ary, 5);
+	max = find_max(ary, 5);
+
+	printf("배열 요소 중 최댓값: %.1lf\n", max);
+	*/
+
+	// 코드 52
+	/*
+	char small = 'a', cap = 'A';
+
+	printf("문자 출력: %c %c\n", small, cap);
+	printf("아스키 코드 출력: %d %d", small, cap);
+	*/
+	
+	// 코드 54
+	/*
+	char str[80];
+	printf("문자열 입력: ");
+	scanf_s("%s", str, 80);
+	printf("첫번째 단어: %s\n", str);
+	
+	scanf_s("%s", str, 80);
+	printf("버퍼에 남아있는 두번째 단어: %s\n", str);
+	*/
+	
+	// 코드 55
+	/*
+	char str1[80] = "strawberry";
+	char str2[80] = "apple";
+	char* ps1 = (char*)"banana";
+
+	printf("최초 문자열: %s\n", str1);
+	strcpy_s(str1, 80, str2);
+	printf("바뀐 문자열: %s\n", str1);
+
+	strcpy_s(str1, 80, ps1);
+	printf("바뀐 문자열: %s", str1);
+	*/
+	
+	// 코드 56
+	/*
+	char str[80] = "straw";
+	strcat_s(str, 80, "berry");
+	printf("%s\n", str);
+	strncat_s(str, 80, "piece", 3);
+	printf("%s\n", str);
+	*/
 
 	return 0;
 }
@@ -120,5 +176,30 @@ void print_ary2(int pa[5]) {
 	for (i = 0; i < 5; i++) {
 		printf("%d ", pa[i]);
 	}
+}
+*/
+
+/*
+void input_ary(double* pa, int size)
+{
+	int i;
+	printf("%d개의 실수값 입력: ", size);
+	for (i = 0; i < size; i++) {
+		scanf_s("%lf", pa + i);
+	}
+}
+
+double find_max(double* pa, int size)
+{
+	double max;
+	int i;
+	max = pa[0];
+	for (i = 1; i < size; i++)
+	{
+		if (pa[i] > max) {
+			max = pa[i];
+		}
+	}
+	return max;
 }
 */
