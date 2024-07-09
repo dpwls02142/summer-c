@@ -2,6 +2,17 @@
 #include <stdlib.h>
 #include<string.h>
 
+#define ADD(a, b, c) ((a) + (b) + (c))
+#define MULTIPLY(a, b, c) ((a) * (b) * (c))
+
+#define PI 3.14159
+#define AREA(radius) (PI * (radius) * (radius))
+#define CIRCUMFERENCE(radius) (2 * PI * (radius))
+
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+
+#define MAX_SIZE 1000
+
 void calculator(int* a, int* b, int* sum, int* sub, int* mult, int* div, int* rem);
 void admission(int* audience, int* seat, double* rate);
 void sum(int* a, int *res);
@@ -34,6 +45,21 @@ int isPalindrome(char word[]) {
 	}
 
 	return 1;
+
+}
+
+int sum2(int *n) {
+	if (*n == 1) {
+		return 1;
+	}
+	else {
+		int temp = *n - 1;
+		return *n + sum2(&temp);
+	}
+}
+
+int compare(const void* a, const void* b) {
+	return (*(int*)a - *(int*)b);
 }
 
 struct employee {
@@ -41,6 +67,12 @@ struct employee {
 	int id;
 	int salary;
 };
+
+typedef struct {
+	int weight;
+	int height;
+	int rank;
+} Person;
 
 int main(void) {
 
@@ -853,25 +885,26 @@ int main(void) {
 		if (arr[i] % 2 != 0) {
 			odd[odd_count++] = arr[i];
 		}
+
 		else {
 			even[even_count++] = arr[i];
 		}
+
 	}
 
 	for (int i = 0; i < odd_count; i++) {
 		printf("%d ", odd[i]);
 	}
-	for (int i = even_count - 1; i >= 0; i--) {
+	for (int i = even_count-1 ; i >= 0; i--) {
 		printf("%d ", even[i]);
 	}
-	printf("\n");
 	*/
 	
 	// 코드 57
 	/*
 	char word[100];
 
-	scanf_s("%s", word);
+	scanf_s("%s", word, 100);
 
 	if (isPalindrome(word)) {
 		printf("1");
@@ -979,9 +1012,107 @@ int main(void) {
 		printf("\n");
 	}
 	*/
+	
+	// 코드 63
+	/*
+	FILE* fp;
 
+	int err = fopen_s(&fp, "test.text", "w");
+	if (err != 0) {
+		printf("파일 개방 실패");
+		return 1;
+	}
+	printf("파일 오픈 성공");
+	
+	const char* name = "홍길동";  
+	const char* studentID = "20231234"; 
+	const char* contact = "010-1234-5678";
+
+	// 파일에 정보 쓰기
+	fprintf(fp, "이름: %s\n", name);
+	fprintf(fp, "학번: %s\n", studentID);
+	fprintf(fp, "연락처: %s\n", contact);
+
+
+	fclose(fp);
+	*/
+
+	// 코드 64
 	
 
+	// 코드 65
+	/*
+	int x, y, z;
+	scanf_s("%d %d %d", &x, &y, &z);
+	printf("+: %d\n", ADD(x, y, z));
+	printf("*: %d", MULTIPLY(x, y, z));
+	*/
+
+	// 코드 66
+	/*
+	double radius;
+
+	scanf_s("%lf", &radius);
+
+	printf("원의 넓이: %.2f\n", AREA(radius));
+	printf("원의 둘레: %.2f\n", CIRCUMFERENCE(radius));
+	*/
+
+	// 코드 67
+	/*
+	int a, b;
+
+	scanf_s("%d %d", &a, &b);
+
+	printf("더 큰 값: %d", MAX(a, b));
+	*/
+
+	// 코드 68
+	/*
+	int num = 10;
+	printf("%d", sum2(&num));
+	*/
+	
+	// 코드 69
+	/*
+	int n;
+	printf("사람의 인원수를 입력하세요: ");
+	scanf_s("%d", &n);
+
+	Person *people = (Person *)malloc(n * sizeof(Person));
+	
+	if (people == NULL) {
+		printf("메모리 할당 실패\n");
+		return 1;
+	}
+
+	for (int i = 0; i < n; i++) {
+		printf("%d번째 사람의 몸무게와 키를 입력하세요: ", i + 1);
+		scanf_s("%d %d", &people[i].weight, &people[i].height);
+		people[i].rank = 1; 
+	}
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (i != j) {
+				if (people[i].weight > people[j].weight && people[i].height > people[j].height) {
+					people[j].rank++;
+				}
+			}
+		}
+	}
+
+	for (int i = 0; i < n; i++) {
+		printf("%d번째 사람의 순위: %d\n", i + 1, people[i].rank);
+	}
+	
+	free(people);
+	*/
+	
+	// 코드 70
+	
+
+	
 	return 0;
 	
 }
