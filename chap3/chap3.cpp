@@ -9,6 +9,9 @@
 // void auto_func(void);
 // void static_func(void);
 
+#define VER 7
+#define BIT32
+
 struct student
 {
 	int num;
@@ -48,6 +51,8 @@ enum season { spring, sumer, fall, winter };
 typedef struct student Student;
 
 void print_data(Student* ps);
+
+void fruit(int count);
 
 int main(void) {
 
@@ -224,8 +229,150 @@ int main(void) {
 	*/
 	
 	// 코드 76
-	Student s1 = { 315, 4.2 };
+	/*
+	Student s1 = {315, 4.2};
 	print_data(&s1);
+	*/
+
+	// 코드 81
+	/*
+	FILE* fp;
+	int err = fopen_s(&fp, "hanrayng.txt", "r");
+	if (err != 0) {
+		printf("파일이 열리지 않았습니다");
+		return 1;
+	}
+	printf("파일이 열렸습니다");
+	fclose(fp);
+	*/
+
+	// 코드 82
+	/*
+	FILE* fp;
+	int ch;
+	int err;
+
+	err = fopen_s(&fp, "hanrayng.txt", "r");
+	if (err != 0) {
+		printf("파일이 열리지 않았습니다");
+		return 1;
+	}
+	
+
+	while (1) {
+		ch = fgetc(fp);
+		if (ch == EOF) {
+			break;
+		}
+		putchar(ch);
+	}
+	fclose(fp);
+	*/
+
+	// 코드 83
+	/*
+	FILE* fp;
+	char str[] = "cherry";
+	int i = 0, err;
+
+	err = fopen_s(&fp, "b.txt", "w");
+	if (err != 0) {
+		printf("오류");
+		return 1;
+	}
+	while (str[i] != '\0') {
+		fputc(str[i], fp);
+		i++;
+	}
+	fputc('\n', fp);
+	fclose(fp);
+	*/
+
+	// 코드 84
+	/*
+	int ch;
+	while (1) {
+		ch = getchar();
+		if (ch == EOF) {
+			break;
+		}
+		putchar(ch);
+	}
+	*/
+
+	// 코드 85
+	/*
+	FILE* fp;
+	int ary[10] = { 13,10,13,13,10,26,13,10,13,10 };
+	int i, res, err;
+
+	err = fopen_s(&fp, "hanrayng.txt", "wb");
+	if (err != 0) {
+		printf("파일이 열리지 않았습니다");
+		return 1;
+	}
+	for (i = 0; i < 10; i++) {
+		fputc(ary[i], fp);
+	}
+	fclose(fp);
+	*/
+
+	// 코드 86
+	/*
+	FILE* fp;
+	char str[] = "strawberry";
+	int i = 0, err;
+
+	err = fopen_s(&fp, "b.txt", "a+");
+	if (err != 0) {
+		printf("오류");
+		return 1;
+	}
+
+	while (str[i] != '\0') {
+		fputc(str[i], fp);
+		i++;
+	}
+	fputc('\n', fp);
+	fclose(fp);
+	*/
+
+	// 코드 87
+	FILE* fp;
+	int num = 10, res, err;
+
+	err = fopen_s(&fp, "c.txt", "wb");
+	if (err != 0) {
+		printf("오류");
+		return 1;
+	}
+	fwrite(&num, sizeof(num), 1, fp);
+	fclose(fp);
+
+	if (fopen_s(&fp, "c.txt", "rb") == 0) {
+		fread(&res, sizeof(res), 1, fp);
+		printf("%d", res);
+
+		fclose(fp);
+	}
+	// 코드 91
+	/*
+	int max;
+#if VER >= 6
+	printf("버전 %d\n", VER);
+#endif
+
+#ifdef BIT16
+	max = 32767;
+#else
+	max = 2147483647;
+#endif
+
+	printf("int형 변수 최댓값: %d", max);
+	*/
+
+	// 코드 94
+	// fruit(1);
 	
 	return 0;
 
@@ -268,4 +415,13 @@ void print_data(Student* ps)
 {
 	printf("학번: %d\n", ps->num);
 	printf("학점: %.1lf\n", ps->grade);
+}
+
+void fruit(int count) {
+	printf("apple\n");
+	if (count == 5) {
+		return;
+	}
+	fruit(count + 1);
+	printf("jam\n");
 }
